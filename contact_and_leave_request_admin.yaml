@@ -1,0 +1,21 @@
+---
+apiVersion: api.cerbos.dev/v1
+rolePolicy:
+  role: contact_and_leave_request_admin
+  parentRoles:
+    - user
+  rules:
+    - resource: contact
+      allowActions:
+        - delete:soft
+        - delete:hard
+      condition:
+        match:
+          expr: P.attr.city == "istanbul"
+
+    - resource: leave_request
+      allowActions:
+        - delete:hard
+      condition:
+        match:
+          expr: P.attr.city == "istanbul"
